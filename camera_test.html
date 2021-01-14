@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Solace</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	
+<script type="text/javascript">
+	function isAndroidMobile(){ 
+		//alert("test isAndroidMobile"); 
+		//console.log(true); 
+		return true; 
+	}
+	window.addEventListener("message",function(e){console.log(e.data)});
+
+function hello(yourname){
+	console.log("js method called hello");
+  alert("Hi, I'm "+yourname);
+  return true;
+}
+
+//alert("this is test");
+function getmethere(){
+	window.location="a.html";
+}
+
+function checkroomTV(roomId){
+	console.log("This is your room id" + roomId);
+}
+
+
+function joinroomTV(roomId, p1, p2, p3){
+	console.log("here is the inputs provided " +roomId+ " = " + p1 + " = " + p2 + " = " +p3);
+	window.location="a.html";
+}
+
+function callToNative(){
+	console.log("You clicked me");
+	//console.log(window.webkit);
+	//console.log(webkit);
+	try {
+		//console.log('Before Native Method call.');
+		//window.webkit.messageHandlers.sumbitToiOS.postMessage("This is from html page");
+		
+		//console.log(window);
+		//webkit.messageHandlers.submitToiOS.postMessage({test:123});  //working
+		webkit.messageHandlers.submitToiOS.postMessage('sagar'); //working
+		//webkit.messageHandlers.submitToiOS.postMessage(0); // working
+		//webkit.messageHandlers.submitToiOS.postMessage(); //notworking
+		
+		//console.log('After Native Method call.');
+	}catch(err){
+		//console.log('error');
+	}
+}
+
+function callToNativeIsAndroidTV(){
+	try {
+		//console.log('Before Native Method call.');
+		//window.webkit.messageHandlers.sumbitToiOS.postMessage("This is from html page");
+		
+		//console.log(window);
+		webkit.messageHandlers.isAndroidTV.postMessage(100);
+		
+		
+		//console.log('After Native Method call.');
+	}catch(err){
+		//console.log('error');
+	}
+	
+}
+
+
+function checkMicrophoneAndCameraPermissions(){
+	navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(function(stream) {
+        alert('You let me use your mic!')
+      })
+      .catch(function(err) {
+        alert('No mic for you!')
+      });
+}
+
+function checkMicrophonePermissions(){
+	navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(function(stream) {
+        alert('You can use Mic!')
+      })
+      .catch(function(err) {
+      	document.getElementById("wrapper").innerHTML = err;
+      	alert(err);
+        alert('Error, No permission you cant use mic')
+      });
+}
+
+
+function checkCameraPermissions(){
+	navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        alert('You can use camera')
+      })
+      .catch(function(err) {
+      	document.getElementById("wrapper").innerHTML = err;
+      	alert(err);
+        alert('Error, You cant use mic')
+      });
+}
+
+function download(filename){
+var file_path = "http://solaceinfotech.co.in/projects/webkit/webkit.php?filename="+filename;
+var a = document.createElement('A');
+a.href = file_path;
+a.download = filename;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+
+}
+
+
+
+
+
+</script>
+
+<input type="button" onclick="getmethere();" name="test" value="redirect me to a.html" />
+<br/>
+<input type="button" onclick='callToNative();' name="test" value="Call native message Method" />
+<br/>
+<input type="button" onclick='callToNativeIsAndroidTV();' name="test" value="Call native method isAndroidTV" />
+<br/>
+<input type="button" onclick='checkMicrophonePermissions();' name="test" value="Check Microphone Permissions" />
+<br/>
+<input type="button" onclick='checkCameraPermissions();' name="test" value="Check Camera Permissions" />
+<br/>
+<input type="button" onclick='hello("Sagar");' name="test" value="Simple Alert" />
+<br/>
+
+<input type="button" onclick='download("sample.pdf");' name="test" value="Download PDF" />
+<input type="button" onclick='download("imp.jpg");' name="test" value="Download JPG" />
+<input type="button" onclick='download("Cost-of-poor-quality.png");' name="test" value="Download PNG" />
+<br/>
+
+<div id="wrapper"></div>
+<br/>
+<video id="vid" muted autoplay></video>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	$(function () {
+    video = document.getElementById('vid');
+    video.style.width = document.width + 'px';
+    video.style.height = document.height + 'px';
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    var constraints = {
+         audio: false,
+         video: {
+             facingMode: 'user'
+         }
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+        video.srcObject = stream;
+    });
+});
+	</script>
+</body>
+</html>
