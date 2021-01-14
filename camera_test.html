@@ -21,20 +21,10 @@ function hello(yourname){
   return true;
 }
 
-//alert("this is test");
-function getmethere(){
-	window.location="a.html";
-}
-
 function checkroomTV(roomId){
 	console.log("This is your room id" + roomId);
 }
 
-
-function joinroomTV(roomId, p1, p2, p3){
-	console.log("here is the inputs provided " +roomId+ " = " + p1 + " = " + p2 + " = " +p3);
-	window.location="a.html";
-}
 
 function callToNative(){
 	console.log("You clicked me");
@@ -121,11 +111,6 @@ document.body.removeChild(a);
 
 </script>
 
-<!--input type="button" onclick="getmethere();" name="test" value="redirect me to a.html" />
-<br/>
-<input type="button" onclick='callToNative();' name="test" value="Call native message Method" />
-<br/>
-<input type="button" onclick='callToNativeIsAndroidTV();' name="test" value="Call native method isAndroidTV" /-->
 <br/>
 <input type="button" onclick='checkMicrophonePermissions();' name="test" value="Check Microphone Permissions" />
 <br/>
@@ -133,11 +118,6 @@ document.body.removeChild(a);
 <br/>
 <input type="button" onclick='hello("World");' name="test" value="Simple Alert" />
 <br/>
-
-<!--input type="button" onclick='download("sample.pdf");' name="test" value="Download PDF" />
-<input type="button" onclick='download("imp.jpg");' name="test" value="Download JPG" />
-<input type="button" onclick='download("Cost-of-poor-quality.png");' name="test" value="Download PNG" />
-<br/-->
 
 <div id="wrapper"></div>
 <br/>
