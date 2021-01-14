@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Solace</title>
+<title>iRevo</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -120,10 +120,6 @@ document.body.removeChild(a);
 
 }
 
-
-
-
-
 </script>
 
 <input type="button" onclick="getmethere();" name="test" value="redirect me to a.html" />
@@ -136,7 +132,7 @@ document.body.removeChild(a);
 <br/>
 <input type="button" onclick='checkCameraPermissions();' name="test" value="Check Camera Permissions" />
 <br/>
-<input type="button" onclick='hello("Sagar");' name="test" value="Simple Alert" />
+<input type="button" onclick='hello("World");' name="test" value="Simple Alert" />
 <br/>
 
 <input type="button" onclick='download("sample.pdf");' name="test" value="Download PDF" />
@@ -158,6 +154,7 @@ document.body.removeChild(a);
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
+	video.setAttribute('webkit-playsinline', 'webkit-playsinline');
 
     var constraints = {
          audio: false,
